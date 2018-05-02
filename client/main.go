@@ -30,10 +30,7 @@ func main() {
 
 	// Subscribe to collect client request count as a distribution
 	// and the count of the errored RPCs.
-	if err := view.Register(
-		ocgrpc.ClientRoundTripLatencyView,
-		ocgrpc.ClientErrorCountView,
-	); err != nil {
+	if err := view.Register(ocgrpc.DefaultClientViews...); err != nil {
 		log.Fatal(err)
 	}
 
